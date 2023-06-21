@@ -1,0 +1,8 @@
+@charset "UTF-8";
+
+.deck {
+    display: inline-block;
+    background-color: rgba(95, 255, 95, 0.404);
+    width: calc(100% / 15);
+    margin: 10px 0 10px 0;
+}

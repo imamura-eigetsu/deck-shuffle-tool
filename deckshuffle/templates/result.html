@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport">
+    
+    <title>シャッフル結果</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>結果</h1>
+    <p>{{ message }}</p>
+    <h2>シャッフル前</h2>
+    {% for i in before_card %}
+        <div class = "deck">{{i}}</div>
+    {% endfor %}
+    <h2>シャッフル後</h2>
+    {% for i in after_card %}
+        <div class = "deck">{{i}}</div>
+    {% endfor %}
+    <form action="/result" method="POST" enctype="multipart/from-data">
+        <label>シャッフルの種類：</label>
+        <select name="sel" required>
+            <option value="null" disabled selected>選択してください</option>
+            <option value="ヒンズーシャッフル">ヒンズーシャッフル</option>
+            <option value="スライドシャッフル">スライドシャッフル</option>
+            <option value="ディールシャッフル(標準)">ディールシャッフル(標準)</option>
+            <option value="ディールシャッフル(ランダム)">ディールシャッフル(ランダム)</option>
+            <option value="ファローシャッフル(完全)">ファローシャッフル(完全)</option>
+            <option value="ファローシャッフル(不完全)">ファローシャッフル(不完全)</option>
+            <option value="ウォッシュシャッフル">ウォッシュシャッフル</option>
+        </select>
+        <div>
+            <label>回数：</label>
+            <input type="number" min = "0" name="count" placeholder="回数" required>
+        </div>
+        <div>
+            <input type="submit" value="シャッフル">
+        </div>
+    </form>
+    <form action="/" method="POST">
+        <input type="submit" value="初期化">
+    </form>
+</body>
+</html>
